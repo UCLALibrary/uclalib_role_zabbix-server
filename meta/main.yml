@@ -1,0 +1,19 @@
+galaxy_info:
+  author: John H. Robinson, IV <jhriv@ucla.edu>
+  description: Zabbix Server
+  company: UCLA Library
+
+  license: BSD-2-Clause
+
+  min_ansible_version: 2.9
+
+  # Tested on the following, may work for others
+  platforms:
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags: []
+
+dependencies:
+  - role: uclalib_role_zabbix
