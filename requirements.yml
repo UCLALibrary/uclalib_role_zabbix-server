@@ -1,0 +1,4 @@
+---
+roles:
+  - "git+https://github.com/UCLALibrary/uclalib_role_rhelscl.git" 
+  - "git+https://github.com/UCLALibrary/uclalib_role_postgresql.git"

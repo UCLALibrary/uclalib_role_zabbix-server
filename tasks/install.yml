@@ -1,0 +1,27 @@
+---
+
+- name: Add Zabbix Repository
+  yum:
+    name: "{{ zabbix_rpm_url }}"
+    state: present
+
+- name: Install Zabbix Server packages
+  yum:
+    name: "{{ zabbix_server_pkgs }}"
+    state: present
+  vars:
+    zabbix_server_pkgs:
+      - "{{ (zabbix_use_mysql == true) | ternary('zabbix-server-mysql', 'zabbix-server-pgsql') }}"
+      - zabbix-agent
+
+- name: Enable Zabbix Frontend Repo
+  ini_file:
+    dest: /etc/yum.repos.d/zabbix.repo
+    section: zabbix-frontend
+    option: enabled
+    value: "1"
+
+- name: Install Zabbix Frontend packages
+  yum:
+    name: "{{ zabbix_frontend_pkgs }}"
+    state: present

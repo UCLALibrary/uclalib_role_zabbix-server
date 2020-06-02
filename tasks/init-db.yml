@@ -1,0 +1,10 @@
+---
+
+- name: Force handlers before database import
+  meta: flush_handlers
+
+- name: Init the database
+  shell: >
+    zcat /usr/share/doc/zabbix-server-pgsql*/create.sql.gz | psql postgres://{{ zabbix_db_user_name }}:{{ zabbix_db_user_pw }}@{{ zabbix_db_host }}:5432/{{ zabbix_db_name }}
+  register: db_init_out
+  changed_when: db_init_out.stderr_lines | length == 0

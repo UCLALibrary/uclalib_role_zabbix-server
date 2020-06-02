@@ -1,6 +1,2 @@
 ---
-
-- name: Reload systemd
-  systemd:
-    daemon_reload: true
-  become: true
+# handlers file for uclalib_role_zabbix-server
